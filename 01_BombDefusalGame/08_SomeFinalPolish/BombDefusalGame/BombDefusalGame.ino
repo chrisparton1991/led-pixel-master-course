@@ -7,8 +7,8 @@
 
 struct Bomb {
   int pos;
-  int duration;
   unsigned long startTime;
+  int duration;
 };
 
 CRGB leds[NUM_LEDS];
@@ -41,16 +41,16 @@ void loop() {
     }
   }
 
-  leds[playerPos] = CRGB::Blue;
-  leds[wallPos] = CRGB::Red;
+  setLed(playerPos, CRGB::Blue);
+  setLed(wallPos, CRGB::Red);
 
   int bombTimeLeft = bomb.duration - (millis() - bomb.startTime);
   leds[bomb.pos] = getBombColor(bombTimeLeft);
 
-  if (playerPos == wallPos) {
-    gameOver(wallPos);
-  } else if (bombTimeLeft <= 0) {
+  if (bombTimeLeft <= 0) {
     gameOver(bomb.pos);
+  } else if (playerPos == wallPos) {
+    gameOver(wallPos);
   }
 
   FastLED.show();
@@ -78,23 +78,14 @@ void moveBomb() {
     bomb.pos = random16(NUM_LEDS);
   } while (bomb.pos == playerPos);
 
-  bomb.duration = max(1500, 5000 - (score * 100));
   bomb.startTime = millis();
+  bomb.duration = max(1500, 5000 - (score * 100));
 }
 
 void moveWall() {
   do {
     wallPos = random16(NUM_LEDS);
   } while (getDistance(wallPos, bomb.pos) < 2 || getDistance(wallPos, playerPos) < 2);
-}
-
-CRGB getBombColor(int timeLeft) {
-  int brightness = map(timeLeft, bomb.duration, 0, 0, 255);
-  if (timeLeft < 1000) {
-    brightness = beatsin8(255, 0, 255);
-  }
-
-  return CRGB(brightness, brightness, 0);
 }
 
 int getDistance(int p1, int p2) {
@@ -106,10 +97,19 @@ int getDistance(int p1, int p2) {
   }
 }
 
+CRGB getBombColor(int timeLeft) {
+  int brightness = map(timeLeft, bomb.duration, 0, 0, 255);
+  if (timeLeft < 1000) {
+    brightness = beatsin8(255, 0, 255);
+  }
+
+  return CRGB(brightness, brightness, 0);
+}
+
 void gameOver(int pos) {
   for (int i = 0; i < NUM_LEDS; i++) {
-    leds[constrain(pos - i, 0, NUM_LEDS - 1)] = CRGB::Red;
-    leds[constrain(pos + i, 0, NUM_LEDS - 1)] = CRGB::Red;
+    setLed(pos - i, CRGB::Red);
+    setLed(pos + i, CRGB::Red);
     FastLED.show();
     delay(30);
   }
@@ -124,3 +124,8 @@ void gameOver(int pos) {
   startGame();
 }
 
+void setLed(int index, CRGB color) {
+  if (index >= 0 && index < NUM_LEDS) {
+    leds[index] = color;
+  }
+}

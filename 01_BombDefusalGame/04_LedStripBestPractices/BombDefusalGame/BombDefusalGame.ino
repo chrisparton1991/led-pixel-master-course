@@ -1,4 +1,4 @@
-``#include "FastLED.h"
+#include "FastLED.h"
 
 #define NUM_LEDS 12
 #define DATA_PIN 10

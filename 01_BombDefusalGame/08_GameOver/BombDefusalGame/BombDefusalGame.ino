@@ -44,7 +44,7 @@ void loop() {
   setLed(wallPos, CRGB::Red);
 
   int bombTimeLeft = bomb.duration - (millis() - bomb.startTime);
-  leds[bomb.pos] = getBombColor(bombTimeLeft);
+  setLed(bomb.pos, getBombColor(bombTimeLeft));
 
   if (bombTimeLeft <= 0) {
     gameOver(bomb.pos);

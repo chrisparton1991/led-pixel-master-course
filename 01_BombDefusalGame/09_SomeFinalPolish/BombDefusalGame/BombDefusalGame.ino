@@ -19,8 +19,8 @@ int wallPos = 0;
 
 void setup() {
   delay(3000);
-
   random16_add_entropy(analogRead(0));
+
   pinMode(MOVE_LEFT_PIN, INPUT_PULLUP);
   pinMode(MOVE_RIGHT_PIN, INPUT_PULLUP);
   FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
@@ -45,7 +45,7 @@ void loop() {
   setLed(wallPos, CRGB::Red);
 
   int bombTimeLeft = bomb.duration - (millis() - bomb.startTime);
-  leds[bomb.pos] = getBombColor(bombTimeLeft);
+  setLed(bomb.pos, getBombColor(bombTimeLeft));
 
   if (bombTimeLeft <= 0) {
     gameOver(bomb.pos);
@@ -100,7 +100,7 @@ int getDistance(int p1, int p2) {
 CRGB getBombColor(int timeLeft) {
   int brightness = map(timeLeft, bomb.duration, 0, 0, 255);
   if (timeLeft < 1000) {
-    brightness = beatsin8(255, 0, 255);
+    brightness = beatsin8(240, 0, 255);
   }
 
   return CRGB(brightness, brightness, 0);

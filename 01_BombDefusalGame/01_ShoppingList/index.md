@@ -10,8 +10,9 @@
 ## Required Components
 These components are required to complete the project in its minimal form.
 
-### 1x Arduino Uno + USB cable ([Buy on eBay](https://www.ebay.com/itm/253347374216))
+### 1x Arduino Uno + USB cable ([Buy on eBay](https://www.ebay.com/362752150091))
 * The microcontroller we will be using to control our LED strip.
+* When purchasing, make sure you're purchasing the board and USB cable, not just the cable.
 * You can also buy an original Arduino brand from the Arduino.cc store if you want to, they are higher quality but much more expensive!
 
 ### 1 metre WS2812B 5V addressable LED strip ([Buy on eBay](https://www.ebay.com/itm/322058431958))
@@ -26,15 +27,15 @@ These components are required to complete the project in its minimal form.
 * You could also consider getting a more powerful 5 Amp power supply for use with larger projects.
 * You'll need a [5.5x2.1mm female adapter](https://www.ebay.com/itm/221503522013). The eBay links above include these, but you can also buy them on their own.
 
-### 8x Jumper cables (a.k.a. Dupont cables) ([Buy on eBay](https://www.ebay.com/itm/182871686698))
+### 8x Jumper cables (a.k.a. Dupont cables) ([Buy on eBay](https://www.ebay.com/itm/312724733910))
 * We will use male-to-male jumper cables, but depending on the plug your LED strip comes with, you may need male-to-female as well.
 * Since these cables are cheap, I'd recommend getting a set of female-to-female, male-to-female, and male-to-male. Chances are they'll come in handy someday!
 
-### 2x Push buttons (12x12mm) ([Buy on eBay](https://www.ebay.com/itm/182387276369))
+### 2x Push buttons (12x12mm) ([Buy on eBay](https://www.ebay.com/itm/172942048677))
 * The user presses these to move the player.
 * These buttons come with black caps, but you can also buy buttons without caps and buy separate caps of any color you like!
 
-### 1x Breadboard ([Buy on eBay](https://www.ebay.com/itm/183043997431))
+### 1x Breadboard ([Buy on eBay](https://www.ebay.com/itm/303104250905))
 * Used to connect the buttons to the Arduino via the jumper cables.
 
 ### 1x 3-pin LED strip connector set ([Buy on eBay](https://www.ebay.com/itm/322560873224))
@@ -52,7 +53,7 @@ These components are not essential, but will contribute to the safety, reliabili
 * Used to prevent power spikes on the data line of the LED strip.
 * Anything between 200Ω and 500Ω will work fine.
 
-### 2x 10mm silicone LED strip end caps ([Buy on eBay](https://www.ebay.com/itm/182087898104))
+### 2x 10mm silicone LED strip end caps ([Buy on eBay](https://www.ebay.com/itm/253484846034))
 * Used to cap off the ends of the LED strip.
 * We will be using them mainly for cosmetic appearance in this project
 * When applied correctly with silicone sealant, they can be used for waterproofing LED strips.
